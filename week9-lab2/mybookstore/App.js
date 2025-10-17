@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Components
-import Navbar from '../mybookstore/components/Navbar';
-import Footer from '../mybookstore/components/Footer';
-import NotFound from '../mybookstore/components/NotFound';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 
 // Pages
 import HomePage from './pages/HomePage';
