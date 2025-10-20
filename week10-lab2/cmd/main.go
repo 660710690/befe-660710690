@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "week10-lab2/docs" // ให้ Swag สร้างเอกสารใน Folder docs โดยอัตโนมัติ
+	// _ "week10-lab2/docs" // ให้ Swag สร้างเอกสารใน Folder docs โดยอัตโนมัติ
 
 	"week10-lab2/internal/handler"
 
@@ -14,7 +14,7 @@ import (
 // @title           Simple API Example
 // @version         1.0
 // @description     This is a simple example of using Gin with Swagger.
-// @host            localhost:9999
+// @host            localhost:8080
 // @BasePath        /api/v1
 func main() {
 	r := gin.Default()
@@ -23,12 +23,13 @@ func main() {
 	// Swagger endpoint
 	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	// User API routes
+	// Book API routes
 	api := r.Group("/api/v1")
 	{
-		api.GET("/books/:id", handler.GetBookByID) // ใช้ Handler จากไฟล์ user_handler.go
+		api.GET("/books", handler.GetBooks)        // ✅ เพิ่ม route สำหรับ list ทั้งหมด
+		api.GET("/books/:id", handler.GetBookByID) // ของเดิม (หาตาม ID)
 	}
 
 	// Start server
-	r.Run(":9999")
+	r.Run(":8080")
 }

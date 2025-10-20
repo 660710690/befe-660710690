@@ -13,33 +13,41 @@ import BookDetailPage from './pages/BookDetailPage';
 import CategoryPage from './pages/CategoryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import LoginPage from './pages/LoginPage';
+import AddBookPage from './pages/AddBookPage';
+import AllBooksPage from './pages/AllBooksPage';
 
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow bg-gray-50">
-        <header className="bg-white shadow-md rounded p-8">
-        <h1 className="text-2xl font-bold">สวัสดี React</h1>
-        <p className="mt-4 text-gray-600">ยินดีต้อนรับสู่แอพลิเคชัน React ของคุณ!</p>
-        <button className="mt-6 px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-600">เริ่มต้น</button>
-      </header>
-
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/books" element={<BookListPage />} />
-            <Route path="/books/:id" element={<BookDetailPage />} />
-            <Route path="/categories" element={<CategoryPage />} />
-            <Route path="/categories/:category" element={<CategoryPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        
-        <Footer />
-      </div>
+      <Routes>
+        {/* หน้า Login แยก ไม่ต้องมี Navbar/Footer */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/store-manager/all-books" element={<AllBooksPage />} />
+        <Route path="/store-manager/add-book" element={<AddBookPage />}/>
+        {/* หน้าอื่นๆ ที่มี Navbar และ Footer */}
+        <Route
+          path="*"
+          element={
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow bg-gray-50">
+                <Routes>
+                  <Route path="/home" element={<HomePage />} />
+                  <Route path="/books" element={<BookListPage />} />
+                  <Route path="/books/:id" element={<BookDetailPage />} />
+                  <Route path="/categories" element={<CategoryPage />} />
+                  <Route path="/categories/:category" element={<CategoryPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   );
 }
