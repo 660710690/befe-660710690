@@ -9,11 +9,11 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-// กำหนด Claims structure
+// / กำหนด Claims structure
 type CustomClaims struct {
-	UserID      int      `json:"user_id"`
-	Username    string   `json:"username"`
-	Roles       []string `json:"roles"`
+	UserID   int      `json:"user_id"`
+	Username string   `json:"username"`
+	Roles    []string `json:"roles"`
 	jwt.RegisteredClaims
 }
 

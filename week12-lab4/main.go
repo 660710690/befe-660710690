@@ -9,7 +9,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-// JWT + Refresh Token + Token Blacklist
+// / JWT + Refresh Token + Token Blacklist
 // 1. Login >> สร้าง JWT
 // 2. เก็บ JWT ใน httpOnly cookie (ไม่ใช่ localStorage)
 // 3. Backend verify JWT แต่ check blacklist ด้วย
