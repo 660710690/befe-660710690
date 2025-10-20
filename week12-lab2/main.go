@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// / Server-side session storage
+// / Server-side session storage/
 type SessionStore struct {
 	sessions map[string]*SessionData
 	mu       sync.RWMutex

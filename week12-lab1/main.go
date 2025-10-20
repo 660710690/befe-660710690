@@ -50,7 +50,7 @@ func generateToken(userID int, username string, roles []string) (string, error) 
 func verifyToken(tokenString string) (*CustomClaims, error) {
 	// Parse token
 	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
-		// /ตรวจสอบ algorithm
+		// ตรวจสอบ algorithm
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 		}
